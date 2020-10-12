@@ -16,11 +16,24 @@ const connectDB=()=>{
 }
 
 //insetion
+const insertAccount=(account,res)=>{
+    accountCollection.insert(account,(err,result)=>{
+        console.log('Account created')
+        res.send({result:200})
+    })
+}
 
-
-
+//retrieval
+const getAccounts=(res)=>{
+    accountCollection.find().toArray(function(err,result){
+        if (err) throw err;
+        res.send(result)
+    })
+}
 
 //export
 module.exports={
-    connectDB: connectDB
+    connectDB: connectDB,
+    insertAccount,
+    getAccounts
 }
