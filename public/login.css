@@ -1,0 +1,13 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    font: 'helvetica' sans-serif;
+    color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    letter-spacing: .5em;
+    top: 15%;
+    background: linear-gradient(to right,rgb(242, 38, 38),rgb(251, 214, 111));
+    
+}
