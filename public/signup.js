@@ -8,6 +8,7 @@ const submit=()=>{
         username: username,
         password: password
     }
+    
     console.log(account)
     $.ajax({
         url: '/accounts/api/account',
