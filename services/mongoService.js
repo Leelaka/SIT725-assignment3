@@ -1,3 +1,4 @@
+
 const MongoClient = require('mongodb').MongoClient;
 
 //database connection
@@ -16,11 +17,42 @@ const connectDB=()=>{
 }
 
 //insetion
+const insertAccount=(account,res)=>{
+    accountCollection.insert(account,(err,result)=>{
+        console.log('Account created')
+        res.send({result:200})
+    })
+}
 
-
+//retrieval
+const getAccounts=(res)=>{
+    accountCollection.find().toArray(function(err,result){
+        if (err) throw err;
+        res.send(result)
+    })
+}
 
 
 //export
 module.exports={
-    connectDB: connectDB
+    connectDB: connectDB,
+    insertAccount,
+    getAccounts
 }
+
+//verify 
+db.collection('users').findOne({ username: req.body.username}, function(err, user) {
+    console.log('User found ');
+    // if the username typed is invalid 
+    if(err) {
+      console.log('Username invalid')
+      res.json(err);
+    } 
+    if (user && user.password === req.body.password){
+      console.log('Username and password is correct');
+      res.json(user);
+    } else {
+      console.log("Incorrect password or username");
+      res.json({data: "Login invalid"});
+    }              
+});
