@@ -8,7 +8,7 @@ const mongo = require('./services/mongoService')
 
 app.use(Express.static(__dirname + '/public'));
 //setup the routes
-app.use('/accounts',Routes.Singup.SignupRoute)
+app.use('/signup',Routes.Singup.SignupRoute)
 
 //setup the DB
 mongo.connectDB()
