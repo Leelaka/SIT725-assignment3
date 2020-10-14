@@ -16,20 +16,24 @@ const submit=()=>{
         username: username,
         password: password
     }
-    console.log(account)
     $.ajax({
         url: '/signup/api/account',
         contentType: 'application/json',
         data: JSON.stringify(account),
         type: 'POST',
         success: function(result) {
-            alert('Congratulation! Your account has been created!')
+            if (result.result == 200) {
+                alert('Congratulation! Your account has been created!')
+            }
+            else if (result.result == 404) {
+                alert('Sorry, this account cannot be created since this username already exists.')
+            }
         }
     })
 }
 
 const back=()=>{
-    window.location.replace('/login.html')
+    window.location.replace('/index.html')
 }
 
 const help=()=>{
