@@ -17,10 +17,18 @@ const connectDB=()=>{
 
 //insetion
 const insertAccount=(account,res)=>{
-    accountCollection.insert(account,(err,result)=>{
-        console.log('Account created')
-        res.send({result:200})
-    })
+    accountCollection.findOne({username: account.username},function(err,exist){
+        if (exist) {
+            console.log('Account creation failed')
+            res.send({result:404})
+        }
+        else {
+            accountCollection.insert(account,(err,result)=>{
+                console.log('Account created')
+                res.send({result:200})
+            })
+        }
+      })
 }
 
 //retrieval
@@ -31,9 +39,24 @@ const getAccounts=(res)=>{
     })
 }
 
+//verification
+const verification=(account,res)=>{
+    accountCollection.findOne({username: account.username, password: account.password},function(err,exist){
+        if (exist) {
+            console.log('Login successful')
+            res.send({result:200})
+        }
+        else {
+            console.log('Login failed')
+            res.send({result:404})
+        }
+      })
+}
+
 //export
 module.exports={
     connectDB: connectDB,
     insertAccount,
-    getAccounts
+    getAccounts,
+    verification
 }

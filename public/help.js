@@ -1,5 +1,5 @@
 const back=()=>{
-    window.location.replace('/index.html')
+    window.location.replace('/signup.html')
 }
 
 $(document).ready(function(){
