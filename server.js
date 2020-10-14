@@ -6,11 +6,12 @@ const PORT = 3000
 const Routes = require('./routes')
 const mongo = require('./services/mongoService')
 
+app.use(Express.static(__dirname + '/public'));
 //setup the routes
-
+app.use('/login',Routes.Login.LoginRoute)
 
 //setup the DB
-
+mongo.connectDB()
 
 //testing
 app.get('/',(req,res)=>{

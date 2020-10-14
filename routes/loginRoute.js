@@ -1,17 +1,22 @@
 //api
 const Express = require('express')
 let router = Express.Router()
+const bodyParser = require('body-parser');
 const Controller = require('../controllers/loginController')
 
-router.get('/',(req,res)=>{
-    console.log('Testing')
-    res.send('Testing')
+router.use(bodyParser.json());
+
+// router.post('/api/verify',(req,res)=>{
+//     let account = res.body;
+//     console.log(account)
+//     Controller.verifyAccount(account,res)
+// })
+
+router.get('/api/verify',(req,res)=>{
+    let account = req.body;
+    console.log(account)
+    Controller.verifyAccount(account,res)
 })
-
-
-
-
-
 
 
 

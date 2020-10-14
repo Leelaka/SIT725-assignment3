@@ -41,18 +41,21 @@ module.exports={
 }
 
 //verify 
-db.collection('users').findOne({ username: req.body.username}, function(err, user) {
-    console.log('User found ');
-    // if the username typed is invalid 
-    if(err) {
-      console.log('Username invalid')
-      res.json(err);
-    } 
-    if (user && user.password === req.body.password){
-      console.log('Username and password is correct');
-      res.json(user);
-    } else {
-      console.log("Incorrect password or username");
-      res.json({data: "Login invalid"});
-    }              
-});
+const verification=(account,res)=>{
+    db.collection('account').findOne({ username: req.body.username}, function(err, user) {
+        console.log('User found ');
+        // if the username typed is invalid 
+        if(err) {
+          console.log('Username invalid')
+          console.log(res.err)
+        } 
+        if (user && user.password === req.body.password){
+          console.log('Username and password is correct');
+          console.log(user);
+        } else {
+          console.log("Incorrect password or username");
+          console.log({data: "Login invalid"});
+        }              
+    });
+}
+
