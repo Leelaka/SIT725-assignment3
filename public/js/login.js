@@ -16,7 +16,7 @@ const submit=()=>{
         success: function(result) {
             if (result.result == 200) {
                 alert('Login successful!')
-                window.location.replace('/home.html')
+                window.location.replace('./html/home.html')
             }
             else if (result.result == 404) {
                 alert('Sorry, the username or password is incorrect.')
@@ -26,12 +26,12 @@ const submit=()=>{
 }
 
 const register=()=>{
-    window.location.replace('/signup.html')
+    window.location.replace('./html/signup.html')
 }
 
 const reset=()=>{
-    $('#username').empty()
-    $('#password').empty()
+    document.getElementById('username').value = ''
+    document.getElementById('password').value = ''
 }
 
 $(document).ready(function(){

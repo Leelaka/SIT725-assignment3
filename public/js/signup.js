@@ -37,7 +37,7 @@ const back=()=>{
 }
 
 const help=()=>{
-    window.location.replace('/help.html')
+    window.location.replace('help.html')
 }
 
 $(document).ready(function(){
