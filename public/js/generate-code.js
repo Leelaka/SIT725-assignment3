@@ -6,3 +6,7 @@ $(document).ready(function(){
 const back=()=>{
     window.location.replace('./lobby.html');
 };
+
+const join=()=>{
+    window.location.replace('./play.html');
+};
