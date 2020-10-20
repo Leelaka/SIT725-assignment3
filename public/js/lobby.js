@@ -5,3 +5,7 @@ $(document).ready(function(){
 const back=()=>{
     window.location.replace('./home.html');
 };
+
+const create_room=()=>{
+    window.location.replace('./create-room.html');
+};
