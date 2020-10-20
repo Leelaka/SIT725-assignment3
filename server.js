@@ -18,6 +18,17 @@ app.use(Express.static(__dirname + '/public'));
 //Run sockets when client connects
 io.on('connection', socket => {
     console.log('client connected');
+    socket.emit('message', "Welcome to Love Letters");
+
+    //one to many when user connects
+    socket.broadcast.emit('message', "Yay a user joined! Let's begin the game!");
+
+    //io.emit();
+    //whenever the user discount 
+    socket.on('disconnect', ()=>{
+        console.log('Client disconnected');
+        io.emit('message', "Oh no! The user has disconnected!");
+    });
 });
 
 //setup the routes

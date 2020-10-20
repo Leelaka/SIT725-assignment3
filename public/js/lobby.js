@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    console.log('Queue page loaded up');
+    console.log('Lobby page loaded up');
 });
 
 const back=()=>{
