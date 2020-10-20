@@ -5,4 +5,8 @@ $(document).ready(function(){
 
 const back=()=>{
     window.location.replace('./lobby.html');
-}
+};
+
+const create=()=>{
+    window.location.replace('./generate-code.html');
+};
