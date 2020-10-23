@@ -2,11 +2,19 @@
     <head>
         <title>Sign up</title>
         <link rel="stylesheet" type="style/css" href="../css/signup.css">
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">      
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="../js/signup.js" ></script>
     </head>
     <body>
      <!-- heading -->
+        <div id="container">
         <h1>Register Page</h1>
     <!--Input boxes and buttons-->
         <input type="text" id="username" name="username" placeholder="USERNAME"><br><br>
@@ -14,8 +22,20 @@
         <button type="button" onclick="submit()"> SUBMIT </button>
         <button type="button" onclick="back()"> BACK </button>
         <br><br>
-        <button type="button" onclick="help()"> HELP </button>
-        <br>
-        <script src="../js/signup.js" ></script>
+        <button data-target="help" class="btn modal-trigger"> HELP </button>
+        </div>
     </body>
-</html> 
+</html>
+
+<!-- Modal Structure -->
+<div id="help" class="modal">
+    <div class="modal-content">
+        <h4>Account Requirements:</h4>
+        <p>1) A username must be between 6 to 15 characters.</p>
+        <p>2) A password must be between 10 to 24 characters.</p>   
+        <p>3) A username must be unique.</p>   
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Understand</a>
+    </div>
+</div>

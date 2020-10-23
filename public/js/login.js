@@ -15,8 +15,9 @@ const submit=()=>{
         type: 'POST',
         success: function(result) {
             if (result.result == 200) {
+                localStorage.setItem('username', account.username)
                 alert('Login successful!')
-                window.location.replace('./html/home.html')
+                window.location.replace('./html/game.html')
             }
             else if (result.result == 404) {
                 alert('Sorry, the username or password is incorrect.')
