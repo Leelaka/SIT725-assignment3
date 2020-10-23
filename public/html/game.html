@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Love Letters</title>
+
+        <link rel="stylesheet" type="text/css" href="../css/game.css">
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">      
+        <!-- Materialize icons-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>     
+        <script src="../js/game.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+    </head>
+
+    <body>
+        <header id="header">
+            <nav>
+                <div class="nav-wrapper" style=" background-color: #9E65A9;">
+                    <button id = "create_room" data-target="createRoom" class="btn modal-trigger">Creat a room</button>
+                    <button id = "join_room" data-target="joinRoom" class="btn modal-trigger">Join a room</button>
+                    <button id = "cheat_sheet" data-target="cheatsheet" class="btn modal-trigger">Cheatsheet</button>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <div class="container">
+                <h1 class="title">Love Letter</h1>
+                <div class="row" id="Room">
+                    <div class="row" id="room_status"></div>
+                    <div class="row" id="room_players"></div>
+                    <div class="row" id="btns"></div>
+                </div>
+                <div class="row" id="Game"></div> 
+            </div>
+        </main>
+        <footer id = "footer" class="page-footer">
+            <div class="footer-copyright">
+                <div class="container">
+                    <div class="row" id="Welcome"></div>
+                    <button data-target="logout" class="btn modal-trigger">LOGOUT</button>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html> 
+
+<!-- Logout Modal -->
+<div id="logout" class="modal">
+    <div class="modal-content">
+        <h4>Log out</h4>
+        <p>Are you sure you want to log out?</p>  
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+        <a onclick="logout()" href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
+    </div>
+</div>
+
+<!-- Cheatsheet Modal -->
+<div id="cheatsheet" class="modal">
+    <div class="modal-content">
+        <h4>Cheatsheet</h4>
+        <p>Placeholder</p>  
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
+    </div>
+</div>
+
+<!-- Create Room Modal -->
+<div id="createRoom" class="modal">
+    <div class="modal-content">
+        <h4>Create a room</h4>
+        <div class="row">
+            <div class="input-field col s12">
+                <input value="" id="create_roomID" type="text" class="validate">
+                <label class="create_roomID" for="create_roomID">e.g. 1234</label>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a onclick="createRoom()" href="#!" class="modal-close waves-effect waves-green btn-flat">Confirm</a>
+    </div>
+</div>
+
+<!-- Join Room Modal -->
+<div id="joinRoom" class="modal">
+    <div class="modal-content">
+        <h4>Join a room</h4>
+        <div class="row">
+            <div class="input-field col s12">
+                <input value="" id="join_roomID" type="text" class="validate">
+                <label class="join_roomID" for="join_roomID">e.g. 1234</label>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a onclick="joinRoom()" href="#!" class="modal-close waves-effect waves-green btn-flat">Confirm</a>
+    </div>
+</div>

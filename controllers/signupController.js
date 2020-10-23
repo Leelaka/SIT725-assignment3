@@ -1,8 +1,8 @@
 //logic
-const DB = require('../services/mongoService')
+const accountDB = require('../services/accountDB')
 
 const addAccount=(account,res)=>{
-    DB.insertAccount(account,res)
+    accountDB.insertAccount(account,res)
 }
 
 //export

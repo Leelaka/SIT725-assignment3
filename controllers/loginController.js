@@ -1,8 +1,8 @@
 //logic
-const DB = require('../services/mongoService')
+const accountDB = require('../services/accountDB')
 
 const verifyAccount=(account,res)=>{
-    DB.verification(account,res)
+    accountDB.verification(account,res)
 }
 
 //export

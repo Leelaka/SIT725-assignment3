@@ -36,10 +36,7 @@ const back=()=>{
     window.location.replace('/index.html')
 }
 
-const help=()=>{
-    window.location.replace('help.html')
-}
-
 $(document).ready(function(){
     console.log('Signup page ready')
+    $('.modal').modal();
 })
