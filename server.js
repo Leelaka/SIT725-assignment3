@@ -1,45 +1,66 @@
 // This file is the entry point
+const express = require("express");
+const PORT = process.env.PORT || 3000;
+const Routes = require('./routes');
+const mongo = require('./services/mongoService');
+const path = require("path");
 
-const Express = require("express")
-let app = new Express()
-const PORT = 3000 || process.env.PORT;
-const Routes = require('./routes')
-const mongo = require('./services/mongoService')
-const socketio = require('socket.io');
+const app = new express();
 
-//new changes for room creation
+//socket
+const socket = require('socket.io');
 const http = require('http');
 const server = http.createServer(app);
-const io = socketio(server);
+const io = socket(server);
 
 //static folder
-app.use(Express.static(__dirname + '/public'));
+// app.use("/public", express.static(path.resolve(__dirname, "public")));
 
-//Run sockets when client connects
-io.on('connection', socket => {
-    console.log('client connected');
-    socket.emit('message', "Welcome to Love Letters");
+// app.get("/*", (req, res) => {
+//     res.sendFile(path.resolve(__dirname, "public", "index.html"));
+// });
 
-    //one to many when user connects
-    socket.broadcast.emit('message', "Yay a user joined! Let's begin the game!");
-
-    //io.emit();
-    //whenever the user discount 
-    socket.on('disconnect', ()=>{
-        console.log('Client disconnected');
-        io.emit('message', "Oh no! The user has disconnected!");
-    });
-});
+app.use(express.static(__dirname + '/public'));
 
 //setup the routes
-app.use('/login',Routes.Login.LoginRoute)
-app.use('/signup',Routes.Singup.SignupRoute)
+
+app.use('/login',Routes.Login.LoginRoute);
+app.use('/signup',Routes.Singup.SignupRoute);
 
 //setup the DB
-mongo.connectDB()
+mongo.connectDB();
+
 
 server.listen(PORT,()=>{
-    console.log('Server is running on ',PORT)
-})
+    console.log('Server is running on ',PORT);
+});
+
+
+//requirements 
+const { makeid } = require('./utils');
+
+
+//global state 
+const clientRooms = {};
 
 //sockets
+
+io.on('connection', client => {
+    console.log('client connected');
+
+    client.on('newGame', handleNewGame);
+    // client.on('GameCode', gameCodeSend);
+
+    client.emit('message', "Welcome to Love Letters");
+
+    function handleNewGame() {
+        let roomName = makeid(4);
+        clientRooms[client.id] = roomName;
+        client.emit('gameCode', roomName);
+    }
+
+    //whenever the user discount 
+    client.on('disconnect', ()=>{
+        console.log('Client disconnected');
+    });
+});

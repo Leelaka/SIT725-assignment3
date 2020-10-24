@@ -12,7 +12,12 @@
         <br>
         <p class="text">Share the following code to join the room </p>
         <br><br>
-        <div id='code'></div>
+
+        <h3> This is your game code : 
+        <span id="displayGameCode"></span>
+        </h3>
+
+
         <br><br>
         <p class="text">* Please type your created room password to enter a private room</p>
         <br>
@@ -23,6 +28,8 @@
         <br><br>
         <button type="button" id="btn_back" onclick="back()"> BACK </button>
         </div>
+        <script src="/socket.io/socket.io.js"></script>
         <script src="../js/generate-code.js"></script>
+
     </body>
 </html> 
