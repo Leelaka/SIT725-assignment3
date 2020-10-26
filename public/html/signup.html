@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>Sign up</title>
-        <link rel="stylesheet" type="style/css" href="../css/signup.css">
+        <link rel="stylesheet" type="text/css" href="../css/signup.css">
         <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">      
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -13,17 +13,35 @@
         <script src="../js/signup.js" ></script>
     </head>
     <body>
-     <!-- heading -->
-        <div id="container">
-        <h1>Register Page</h1>
-    <!--Input boxes and buttons-->
-        <input type="text" id="username" name="username" placeholder="USERNAME"><br><br>
-        <input type="text" id="password" name="password" placeholder="PASSWORD"><br><br>      
-        <button type="button" onclick="submit()"> SUBMIT </button>
-        <button type="button" onclick="back()"> BACK </button>
-        <br><br>
-        <button data-target="help" class="btn modal-trigger"> HELP </button>
+    <!--NavBar-->
+    <nav>
+        <div class="nav-wrapper white">
+            <img class="brand_logo" src="/logo.png" alt="Loveletter_logo" />
         </div>
+      </nav>
+      
+    <!--Registration form-->
+    <div class= "container">
+        <header class="header">
+            <h1 class="title">Sign Up</h1>
+        </header>
+
+        <form class="form">
+            <div class="form_group">
+                <input class="input" type="text" id="username" name="username" placeholder="Username">
+            </div>
+            <div class="form_group">
+                <input class= "input" type="text" id="password" name="password" placeholder="Password">
+            </div>
+                 
+            <button class="btn" type="button" onclick="submit()"> Sign Up </button>
+            <a class="NewBtn" onclick="back()">If you already have an account, login here</a>
+            
+            <button data-target="help" class="btn modal-trigger"> HELP </button>
+        </form>
+    </div>
+    
+
     </body>
 </html>
 
@@ -31,11 +49,14 @@
 <div id="help" class="modal">
     <div class="modal-content">
         <h4>Account Requirements:</h4>
-        <p>1) A username must be between 6 to 15 characters.</p>
-        <p>2) A password must be between 10 to 24 characters.</p>   
-        <p>3) A username must be unique.</p>   
+        <ul>
+            <li>A username must be between 6 to 15 characters.</li>
+            <li>A password must be between 10 to 24 characters.</li>   
+            <li>Do not use you name as the username and/or password</li>    
+
+        </ul>  
     </div>
     <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Understand</a>
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Got it</a>
     </div>
 </div>
