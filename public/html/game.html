@@ -31,6 +31,7 @@
                     <button id = "join_room" data-target="joinRoom" class="btn modal-trigger">Join a room</button>
                     <button id = "cheat_sheet" data-target="cheatsheet" class="btn modal-trigger">Cheatsheet</button>
                     <button id = "view_rooms" data-target="viewroom" class="btn modal-trigger">View Rooms</button>
+                    <button id = "send_message" data-target="message" class="btn modal-trigger">Message</button>
                     <button id = "view_settings" data-target="settings" class="btn modal-trigger">Settings</button>
                 </div>
             </nav>
@@ -121,6 +122,19 @@
     </div>
     <div class="modal-footer">
         <a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
+    </div>
+</div>
+
+<!-- messages -->
+<div id="message" class="modal">
+    <div class="modal-content">
+        <h4>Message Hub</h4>
+        <div id='pasteMessages'></div>
+        <input type='text' id='messageInput'>
+        <button onclick="sendMessage()" type='button' id='sendMessangebtn'>Send</button>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
     </div>
 </div>
 

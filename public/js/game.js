@@ -42,7 +42,23 @@ const logout=()=>{
     window.location.replace('/index.html');
 };
 
+const messageForm = document.getElementById('chatForm');
+const messageInput = document.getElementById('messageInput');
+
+
+
+const sendMessage=()=>{
+    // // console.log('clicked');
+    let message = $('#messageInput').val();
+    // let payload={
+    //     "message":message,
+    //     "sender":'demo'
+        socket.emit('sendChatMessage', message)
+        message.value = '';
+};
+
 $(document).ready(function(){
+    $('#send_message').hide()
     console.log('Game page ready')
     $('.modal').modal();
     socket = io();
@@ -60,6 +76,7 @@ $(document).ready(function(){
             $('#create_room').hide()
             $('#join_room').hide()
             $('#view_rooms').hide()
+            $('#send_message').show()
             room_id = '<p>You are currently in room ' + msg[1].roomID + ', players in this room:</p>'
             $('#room_status').append(room_id)
             for (var i = 0; i < msg[1].players.length; i++) {
@@ -80,6 +97,7 @@ $(document).ready(function(){
             $('#create_room').hide()
             $('#join_room').hide()
             $('#view_rooms').hide()
+            $('#send_message').show()
             room_id = '<p>You are currently in room ' + msg[1].roomID + ', players in this room:</p>'
             $('#room_status').append(room_id)
             for (var i = 0; i < msg[1].players.length; i++) {
@@ -110,6 +128,7 @@ $(document).ready(function(){
         $('#create_room').show()
         $('#view_rooms').empty()
         $('#join_room').show()
+        $('#send_message').empty()
     })
 
     socket.on('startGame', ()=>{
@@ -117,6 +136,7 @@ $(document).ready(function(){
         $('#room_players').empty()
         $('#btns').empty()
         $('#view_rooms').empty()
+        $('#send_message').show()
         $('#Game').append('<p>Game Start!</p>')
         }
     )
@@ -126,5 +146,18 @@ $(document).ready(function(){
         }
     )
 
-})
+    socket.on('star')
+
+    socket.on('chat-message', data =>{
+        console.log(data);
+    });
+
+
+    
+    // socket.on('chatMessage', msg => {
+    //     $('#chatZone').append($('<li>').text(msg));
+    // });
+
+    
+});
 

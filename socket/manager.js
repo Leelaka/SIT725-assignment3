@@ -76,5 +76,12 @@ exports = module.exports = function(io){
             )
         })
 
+        socket.emit('chat-message', 'clicked!!');
+
+        socket.on('sendChatMessage', message => {
+            console.log(message);
+            socket.broadcast.emit('chat-message', message);
+        });
+
     })
 }
