@@ -59,14 +59,14 @@ $(document).ready(function(){
             alert('Congratulation! Room has been created!')
             $('#create_room').hide()
             $('#join_room').hide()
-            room_id = '<p>You are currently in room ' + msg[1].roomID + ', players in this room:</p>'
+            room_id = '<p class="content">You are currently in room ' + msg[1].roomID + ', players in this room:</p>'
             $('#room_status').append(room_id)
             for (var i = 0; i < msg[1].players.length; i++) {
-                $('#room_players').append('<p>' + msg[1].players[i] + '</p>')
+                $('#room_players').append('<p class="content">' + msg[1].players[i] + '</p>')
             }
-            $('#btns').append('<button type="button" onclick="refresh()"> REFRESH </button>')
-            $('#btns').append('<button type="button" onclick="quit()"> QUIT </button>')
-            $('#btns').append('<button type="button" onclick="start()"> START </button>')
+            $('#btns').append('<button class="btn auto-width r-space" type="button" onclick="refresh()"> REFRESH </button>')
+            $('#btns').append('<button class="btn auto-width r-space" type="button" onclick="quit()"> QUIT </button>')
+            $('#btns').append('<button class="btn auto-width" type="button" onclick="start()"> START </button>')
         }
         else {
             alert('Sorry, this room cannot be created since this roomID already exists.')

@@ -40,6 +40,8 @@ body {
 }
 
 .form {
+    max-width: 50%;
+    margin: auto;
     margin-top: 40px;
     border-radius: 6px;
     overflow: hidden;
@@ -79,11 +81,11 @@ input:focus {
     color: white;
     background: #ABA194;
     transition: 0.3s;
-    
+    background-color: #26a69a;
 }
 
 .btn:hover {
-    background: darken(#ABA194, 5%);
+    background: #2bbbad;
 }
 
 @keyframes NO {
@@ -135,6 +137,18 @@ input:focus {
     color: black;
     font-size: 16px;
 }
-
-
+.help{
+    float: right;
+    width: 50px;
+}
+.text-center{
+    text-align: center;
+    padding-top: 10px;
+}
+a, button{
+    cursor: pointer;
+}
+.auto-width{
+    width:auto;
+}
 

@@ -3,14 +3,12 @@
     margin: 0;
 }
 body{
-    font: 'helvetica' sans-serif;
     color: rgba(0, 0, 0, 0.5);
     justify-content: center;
     text-align: center;
     display: flex;
     letter-spacing: .5em;
     top: 15%;
-    background: linear-gradient(to top,rgb(242, 38, 38),rgb(251, 214, 111));
     backdrop-filter: blur(10px);
 }
 
@@ -18,23 +16,24 @@ body{
     position: relative;
     margin-top: 100px;
     width: 600px;
-    height: 400px;
-    background:linear-gradient(to bottom,rgb(242, 38, 38),rgb(251, 214, 111));
+    height: 400px;     
+    animation: move 10s ease infinite;
+    transform: translate3d(0, 0, 0);
+    background: linear-gradient(45deg, #A2C7E5 10%, #49D49D 90%);
     border-radius: 2px;
 } 
 
-#container button:hover{
-    background-color: darkgray;
-}
 .label{
     padding: 25px;
     font-weight: bold;
+    font-size: 55px;
     font: 'helvetica' sans-serif;
+    color: white;
 }
 
 #username{
     width: 200px;
-    height: 25px;
+    height: 30px;
 }
 
 #password{
@@ -42,7 +41,12 @@ body{
     height: 30px;
 }
 
-button{
-    width: 90px;
-    height: 25px;
+.mr-auto{
+    margin: auto;
+}  
+.btns{
+display: flex;
+margin-left: 65px;
+justify-content: space-evenly;
 }
+

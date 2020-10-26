@@ -3,3 +3,19 @@
     bottom: 0;
     width: 100%;
 }
+.lg-btn{
+    float: right;
+    margin-top: 14px;
+}
+.r-space{
+    margin-right: 10px;
+
+}
+.content{
+    padding-top: 20px;
+    font-size: 25px;
+
+}
+.c-red{
+    background-color: rgb(182, 34, 7) !important;
+}

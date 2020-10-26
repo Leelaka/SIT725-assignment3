@@ -1,12 +1,13 @@
 <html>
     <head>
         <title>Login</title>
+        <link rel="stylesheet" type="text/css" href="./css/signup.css">
         <link rel="stylesheet" type="text/css" href="./css/login.css">
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="./js/login.js"></script>
     </head>
-    <body>
+    <body>      
     <!-- heading -->
         <div id="container">
         <h1 class="label">Love Letters </h1>
@@ -15,11 +16,12 @@
         <input type="text" id="username" name="username" placeholder="USERNAME"><br><br>
         <input type="text" id="password" name="password" placeholder="PASSWORD"><br><br>  
         <!--Buttons-->    
-        <button type="button" id="btn_login" onclick="submit()"> LOGIN </button>
-        <br><br>
-        <button type="button" id="btn_register" onclick="register()"> REGISTER </button>
-        <button type="button" id="btn_reset" onclick="reset()"> RESET </button>
+        <button type="button" class="btn auto-width mr-auto" id="btn_login" onclick="submit()"> LOGIN </button>
+        <div class="btns">
+        <button type="button" class="btn auto-width" id="btn_register" onclick="register()"> REGISTER </button>
+        <button type="button" class="btn auto-width" id="btn_reset" onclick="reset()"> RESET </button>
         <br>
+        </div>
         </div>
         </form>
     </body>

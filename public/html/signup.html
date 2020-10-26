@@ -21,7 +21,9 @@
       </nav>
       
     <!--Registration form-->
+    <button data-target="help" class="help btn modal-trigger"> ? </button><br>
     <div class= "container">
+        
         <header class="header">
             <h1 class="title">Sign Up</h1>
         </header>
@@ -33,11 +35,13 @@
             <div class="form_group">
                 <input class= "input" type="text" id="password" name="password" placeholder="Password">
             </div>
-                 
-            <button class="btn" type="button" onclick="submit()"> Sign Up </button>
-            <a class="NewBtn" onclick="back()">If you already have an account, login here</a>
+                
+            <button class="btn" type="button" onclick="submit()"> Sign Up </button><br>
+           
             
-            <button data-target="help" class="btn modal-trigger"> HELP </button>
+            <div class="text-center">
+           Already a user? <a class="NewBtn" onclick="back()">Sign In</a>
+           </div>
         </div>
     </div>
     
@@ -57,6 +61,6 @@
         </ul>  
     </div>
     <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Got it</a>
+        <a href="#!" class="btn auto-width modal-close waves-effect waves-green">Got it</a>
     </div>
 </div>
