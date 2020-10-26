@@ -20,7 +20,7 @@ const connectDB=()=>{
 const createRoom=(room,res)=>{
     return new Promise((resolve, reject) => {
         roomCollection.findOne({roomID: room.roomID},function(err,exist){
-            array = []
+            array = []; 
             if (exist) {
                 console.log('Room creation failed')
                 array[0] = false

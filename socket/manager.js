@@ -18,7 +18,7 @@ exports = module.exports = function(io){
 
         socket.on('welcomeMessage', (username)=>{
             users[socket.id] = username
-            msg = 'Welcome to Love Letter, ' + users[socket.id] + '!'
+            msg = 'Welcome to Love Letter,  ' + users[socket.id] + '!'
             socket.emit('welcomeMessage', msg)
         })
 

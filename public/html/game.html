@@ -27,9 +27,11 @@
         <header id="header">
             <nav>
                 <div class="nav-wrapper" style=" background-color: #9E65A9;">
-                    <button id = "create_room" data-target="createRoom" class="btn modal-trigger">Creat a room</button>
+                    <button id = "create_room" data-target="createRoom" class="btn modal-trigger">Create a room</button>
                     <button id = "join_room" data-target="joinRoom" class="btn modal-trigger">Join a room</button>
                     <button id = "cheat_sheet" data-target="cheatsheet" class="btn modal-trigger">Cheatsheet</button>
+                    <button id = "view_rooms" data-target="viewroom" class="btn modal-trigger">View Rooms</button>
+                    <button id = "view_settings" data-target="settings" class="btn modal-trigger">Settings</button>
                 </div>
             </nav>
         </header>
@@ -67,17 +69,6 @@
     </div>
 </div>
 
-<!-- Cheatsheet Modal -->
-<div id="cheatsheet" class="modal">
-    <div class="modal-content">
-        <h4>Cheatsheet</h4>
-        <p>Placeholder</p>  
-    </div>
-    <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
-    </div>
-</div>
-
 <!-- Create Room Modal -->
 <div id="createRoom" class="modal">
     <div class="modal-content">
@@ -94,6 +85,7 @@
     </div>
 </div>
 
+
 <!-- Join Room Modal -->
 <div id="joinRoom" class="modal">
     <div class="modal-content">
@@ -107,5 +99,38 @@
     </div>
     <div class="modal-footer">
         <a onclick="joinRoom()" href="#!" class="modal-close waves-effect waves-green btn-flat">Confirm</a>
+    </div>
+</div>
+
+<!-- Cheatsheet Modal -->
+<div id="cheatsheet" class="modal">
+    <div class="modal-content">
+        <h4>Cheatsheet</h4>
+        <p>Placeholder</p>  
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
+    </div>
+</div>
+
+<!-- View rooms -->
+<div id="viewroom" class="modal">
+    <div class="modal-content">
+        <h4>View Rooms</h4>
+        <h5> Rooms that are available : <span id='displayrooms'> </span> </h5> 
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
+    </div>
+</div>
+
+<!-- settings -->
+<div id="settings" class="modal">
+    <div class="modal-content">
+        <h4>Settings</h4>
+        <p></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
     </div>
 </div>

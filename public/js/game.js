@@ -59,6 +59,7 @@ $(document).ready(function(){
             alert('Congratulation! Room has been created!')
             $('#create_room').hide()
             $('#join_room').hide()
+            $('#view_rooms').hide()
             room_id = '<p>You are currently in room ' + msg[1].roomID + ', players in this room:</p>'
             $('#room_status').append(room_id)
             for (var i = 0; i < msg[1].players.length; i++) {
@@ -78,6 +79,7 @@ $(document).ready(function(){
             alert('Congratulation! Your have joined the room!')
             $('#create_room').hide()
             $('#join_room').hide()
+            $('#view_rooms').hide()
             room_id = '<p>You are currently in room ' + msg[1].roomID + ', players in this room:</p>'
             $('#room_status').append(room_id)
             for (var i = 0; i < msg[1].players.length; i++) {
@@ -106,6 +108,7 @@ $(document).ready(function(){
         $('#room_players').empty()
         $('#btns').empty()
         $('#create_room').show()
+        $('#view_rooms').empty()
         $('#join_room').show()
     })
 
@@ -113,12 +116,13 @@ $(document).ready(function(){
         $('#room_status').empty()
         $('#room_players').empty()
         $('#btns').empty()
+        $('#view_rooms').empty()
         $('#Game').append('<p>Game Start!</p>')
         }
     )
 
     socket.on('startFail', ()=>{
-        alert('Not enough players!')
+        alert('Not enough players need 2 players to continue!')
         }
     )
 

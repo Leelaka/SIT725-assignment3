@@ -25,4 +25,4 @@ roomtDB.connectDB()
 
 server.listen(PORT,()=>{
     console.log('Server is running on ',PORT)
-})
+});

@@ -2,7 +2,9 @@ const MongoClient = require('mongodb').MongoClient;
 
 //database connection
 const url = "mongodb+srv://sit725:sit725@test.plk2u.mongodb.net/accountManager?retryWrites=true&w=majority";
+//const url = "mongodb+srv://sit725:sit725@sit725-prac4.ypiah.mongodb.net/accountManager?retryWrites=true&w=majority";
 const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
+
 
 let accountCollection;
 
