@@ -27,33 +27,31 @@
     <body>
         <header id="header">
             <nav>
-                <div class="nav-wrapper" style=" background-color: #9E65A9;">
-                    <button id = "create_room" data-target="createRoom" class="btn auto-width modal-trigger">Create a room</button>
-                    <button id = "join_room" data-target="joinRoom" class="btn auto-width modal-trigger">Join a room</button>
-                    <button id = "cheat_sheet" data-target="cheatsheet" class="btn auto-width modal-trigger">Cheatsheet</button>
+                <div class="nav-wrapper" style=" background-color: white">
+                    <img class="brand_logo" src="/logo.png" alt="Loveletter_logo" />
                     <button data-target="logout" class="btn lg-btn auto-width modal-trigger">LOGOUT</button>
                 </div>
             </nav>
         </header>
         <main>
             <div class="container">
-                <h1 class="title">Love Letter</h1>
+                <h1 class="title">Welcome to Love Letter, TestUser!</h1>
                 <div class="row" id="Room">
                     <div class="row" id="room_status"></div>
                     <div class="row" id="room_players"></div>
                     <div class="row" id="btns"></div>
                 </div>
+                <div class="wrapper">
+                    <ul>
+                        <li><button id = "create_room" data-target="createRoom" class="btn border auto-width modal-trigger">Create a room</button></li>
+                        <li><button id = "join_room" data-target="joinRoom" class="btn border auto-width modal-trigger">Join a room</button></li>    
+                        <li><button id = "cheat_sheet" data-target="cheatsheet" class="btn border auto-width modal-trigger">Cheatsheet</button></li>
+                    </ul>
+                </div>
                 <div class="row" id="Game"></div> 
             </div>
         </main>
-        <footer id = "footer" class="page-footer">
-            <div class="footer-copyright">
-                <div class="container">
-                    <div class="row text-center" id="Welcome"></div>
-                    
-                </div>
-            </div>
-        </footer>
+        
     </body>
 </html> 
 
