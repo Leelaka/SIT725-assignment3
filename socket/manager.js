@@ -23,6 +23,7 @@ exports = module.exports = function(io){
                     UID.updateUID(roomID)
                     delete players[socket.id]
                     delete rooms[roomID]
+                    io.emit('viewRooms', UID.allRooms());
                 }
             }
         });
@@ -39,7 +40,8 @@ exports = module.exports = function(io){
                 currentRoom: null,
                 status: 'normal',
                 hand: [],
-                discardedCards: []
+                discardedCards: [],
+                tokens: 0
             }
             //send welcome message
             msg = 'Welcome to Love Letter, ' + players[socket.id].username + '!'
@@ -58,14 +60,15 @@ exports = module.exports = function(io){
                 player: [players[socket.id]],
                 num: 1,
                 discardedCards: [],
-                currentTurn: null
+                currentTurn: null,
+                messages: []
             }
             let [room_msg, player_msg] = Helper.roomInfo(rooms[roomUID])
             //join
             socket.join(roomUID)
             console.log(players[socket.id].username + ' created room ' + roomUID)
             socket.emit('room', true, room_msg, player_msg, Btns.btn_quit, Btns.btn_start)
-            socket.broadcast.emit('roomCreated', roomUID);
+            io.emit('viewRooms', UID.allRooms());
     
         })
 
@@ -83,6 +86,8 @@ exports = module.exports = function(io){
                     //generate room information
                     let [room_msg, player_msg] = Helper.roomInfo(rooms[roomID])
                     io.in(roomID).emit('room', true, room_msg, player_msg, Btns.btn_quit, Btns.btn_start)
+                    let roomMsgs = Helper.roomMsgBoard(rooms[players[socket.id].currentRoom].messages)
+                    socket.emit('sendMessage', roomMsgs);
                 }
                 else {
                     msg = 'Sorry, this room is full'
@@ -96,9 +101,11 @@ exports = module.exports = function(io){
             }
         })
 
-        socket.on('chat-message', (message) => {
-            console.log(message);
-            socket.broadcast.emit('chat-message', message);
+        socket.on('sendMessage', (message) => {
+            let msg = players[socket.id].username + ': ' + message
+            rooms[players[socket.id].currentRoom].messages.push(msg)
+            let roomMsgs = Helper.roomMsgBoard(rooms[players[socket.id].currentRoom].messages)
+            io.in(players[socket.id].currentRoom).emit('sendMessage', roomMsgs);
         });
 
         socket.on('back_room', ()=>{
@@ -116,6 +123,7 @@ exports = module.exports = function(io){
                 let [room_msg, player_msg] = Helper.roomInfo(rooms[players[socket.id].currentRoom])
                 io.in(players[socket.id].currentRoom).emit('room', true, room_msg, player_msg, Btns.btn_quit, Btns.btn_start)
                 players[socket.id].currentRoom = null
+                players[socket.id].tokens = 0
                 socket.emit('quit')
             }
             //delete room when user is the only player in room
@@ -124,7 +132,9 @@ exports = module.exports = function(io){
                 socket.leave(players[socket.id].currentRoom)
                 delete rooms[players[socket.id].currentRoom]
                 players[socket.id].currentRoom = null
+                players[socket.id].tokens = 0
                 socket.emit('quit')
+                io.emit('viewRooms', UID.allRooms());
             }
         })
 
@@ -431,8 +441,8 @@ exports = module.exports = function(io){
             //someone wins
             if (flag !== false){
                 //win
-                console.log('winner:',flag)
                 let winner_msg = '<p>' + flag.username + ' wins!</p>'
+                flag.tokens += 1
                 //reset
                 rooms[players[socket.id].currentRoom] = Helper.reset(rooms[players[socket.id].currentRoom])
                 //back to room

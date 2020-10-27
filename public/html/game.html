@@ -30,7 +30,7 @@
                     <button id = "create_room" data-target="createRoom" class="btn modal-trigger">Create a room</button>
                     <button id = "join_room" data-target="joinRoom" class="btn modal-trigger">Join a room</button>
                     <button id = "cheat_sheet" data-target="cheatsheet" class="btn modal-trigger">Cheatsheet</button>
-                    <button id = "view_rooms" data-target="viewroom" class="btn modal-trigger" onclick="viewRoom()" >View Rooms</button>
+                    <button id = "view_rooms" data-target="viewroom" class="btn modal-trigger" >View Rooms</button>
                     <button id = "send_message" data-target="message" class="btn modal-trigger">Message</button>
                     <button id = "view_settings" data-target="settings" class="btn modal-trigger">Settings</button>
                 </div>
@@ -117,7 +117,8 @@
         <div id='displayrooms'></div>
     </div>
     <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+        <a href="#!" onclick="instantJoin()" class="modal-close waves-effect waves-green btn-flat">Confirm</a>
     </div>
 </div>
 
@@ -125,13 +126,12 @@
 <div id="message" class="modal">
     <div class="modal-content">
         <h4>Message Hub</h4>
-        <div id='pasteMessage'></div>
-        <div id='pasteMessages'></div>
+        <div id='messageBoard'></div>
         <input type='text' id='messageInput'>
-        <button onclick="sendMessage()" type='button' id='sendMessangebtn'>Send</button>
     </div>
     <div class="modal-footer">
         <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+        <a href="#!" onclick="sendMessage()" class="modal-close waves-effect waves-green btn-flat">Send</a>
     </div>
 </div>
 
