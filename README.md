@@ -7,7 +7,7 @@ npm start
 ```
 ## Team member contribution
 * Xiao Wei: database, signup backend, room backend, game backend
-* Leelaka Indira Adassuriyage Don: Login backend, view room, message, settings
+* Leelaka Indira Adassuriyage Don: Login backend, view room backend, message backend, settings backend
 * Oluwatosin Samuel DanielL:
 * Ajith Rahul Sanaboina:
 * Akash Deep:
