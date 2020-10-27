@@ -24,6 +24,7 @@ const submit=()=>{
         success: function(result) {
             if (result.result == 200) {
                 alert('Congratulation! Your account has been created!')
+                window.location.replace('./html/index.html')
             }
             else if (result.result == 404) {
                 alert('Sorry, this account cannot be created since this username already exists.')
