@@ -10,7 +10,7 @@ body{
     display: flex;
     letter-spacing: .5em;
     top: 15%;
-    background: linear-gradient(to top,rgb(242, 38, 38),rgb(251, 214, 111));
+    background: linear-gradient(45deg, #49D49D 10%, #A2C7E5 90%);
     backdrop-filter: blur(10px);
 }
 
@@ -19,7 +19,7 @@ body{
     margin-top: 100px;
     width: 600px;
     height: 400px;
-    background:linear-gradient(to bottom,rgb(242, 38, 38),rgb(251, 214, 111));
+    background: linear-gradient(45deg, #49D49D 10%, #A2C7E5 90%);
     border-radius: 2px;
 } 
 
