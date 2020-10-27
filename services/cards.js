@@ -20,9 +20,9 @@ Handmaid1 = new Card('Handmaid', '4', '<img src="../images/Handmaid.jpg" style="
 Handmaid2 = new Card('Handmaid', '4', '<img src="../images/Handmaid.jpg" style="height: 125px;padding-top: 5px; padding-left: 15px;"></img>', '<img src="../images/Handmaid.jpg" onclick="handmaid()" style="height: 125px;padding-top: 5px; padding-left: 15px;"></img>')
 Prince1 = new Card('Prince', '5', '<img src="../images/Prince.jpg" style="height: 125px;padding-top: 5px; padding-left: 15px;"></img>', '<img src="../images/Prince.jpg" onclick="prince()" style="height: 125px;padding-top: 5px; padding-left: 15px;"></img>')
 Prince2 = new Card('Prince', '5', '<img src="../images/Prince.jpg" style="height: 125px;padding-top: 5px; padding-left: 15px;"></img>', '<img src="../images/Prince.jpg" onclick="prince()" style="height: 125px;padding-top: 5px; padding-left: 15px;"></img>')
-King = new Card('King', '7', '<img src="../images/King.jpg" style="height: 125px;padding-top: 5px; padding-left: 15px;"></img>', '<img src="../images/King.jpg" onclick="king()" style="height: 125px;padding-top: 5px; padding-left: 15px;"></img>')
-Countess = new Card('Countess', '8', '<img src="../images/Countess.jpg" style="height: 125px;padding-top: 5px; padding-left: 15px;"></img>', '<img src="../images/Countess.jpg" onclick="countess()" style="height: 125px;padding-top: 5px; padding-left: 15px;"></img>')
-Princess = new Card('Princess', '9', '<img src="../images/Princess.jpg" style="height: 125px;padding-top: 5px; padding-left: 15px;"></img>', '<img src="../images/Princess.jpg" onclick="princess()" style="height: 125px;padding-top: 5px; padding-left: 15px;"></img>')
+King = new Card('King', '6', '<img src="../images/King.jpg" style="height: 125px;padding-top: 5px; padding-left: 15px;"></img>', '<img src="../images/King.jpg" onclick="king()" style="height: 125px;padding-top: 5px; padding-left: 15px;"></img>')
+Countess = new Card('Countess', '7', '<img src="../images/Countess.jpg" style="height: 125px;padding-top: 5px; padding-left: 15px;"></img>', '<img src="../images/Countess.jpg" onclick="countess()" style="height: 125px;padding-top: 5px; padding-left: 15px;"></img>')
+Princess = new Card('Princess', '8', '<img src="../images/Princess.jpg" style="height: 125px;padding-top: 5px; padding-left: 15px;"></img>', '<img src="../images/Princess.jpg" onclick="princess()" style="height: 125px;padding-top: 5px; padding-left: 15px;"></img>')
 Types = ['Guard', 'Priest', 'Baron', 'Handmaid', 'Prince', 'King', 'Countess', 'Princess']
 
 function createDeck() {
