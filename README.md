@@ -6,8 +6,8 @@ npm install
 npm start
 ```
 ## Team member contribution
-Xiao Wei: database, signup backend, room backend, game backend
-Leelaka Indira Adassuriyage DonP:
-Oluwatosin Samuel DanielL:
-Ajith Rahul Sanaboina:
-Akash Deep:
+* Xiao Wei: database, signup backend, room backend, game backend
+* Leelaka Indira Adassuriyage DonP:
+* Oluwatosin Samuel DanielL:
+* Ajith Rahul Sanaboina:
+* Akash Deep:
