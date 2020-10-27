@@ -101,10 +101,10 @@ function roomInfo (room) {
     room_msg = '<p>You are currently in room ' + room.id + ', players in this room:</p>'
     for (var i = 0; i < room.player.length; i++) {
         if (i === room.player.length - 1) {
-            player_msg += room.player[i].username + '</p>'
+            player_msg += room.player[i].username + '(' + room.player[i].tokens + ')' + '</p><p>(The number in brackets is the number of tokens the player has earned in this room)</p>'
         }
         else {
-            player_msg += room.player[i].username + ', '
+            player_msg += room.player[i].username + '(' + room.player[i].tokens + ')' + ', '
         }
     }
     return [room_msg, player_msg]
@@ -195,6 +195,15 @@ function findNext(room) {//debuging
     return room
 }
 
+function roomMsgBoard(messages){
+    let roomMsgs = ''
+    for (var i = 0; i < messages.length; i++) {
+        roomMsgs += '<p>' + messages[i] + '</p>'
+    }
+
+    return roomMsgs
+}
+
 module.exports = {
     createSelections: createSelections,
     drawCard: drawCard,
@@ -206,5 +215,6 @@ module.exports = {
     handPic: handPic,
     elimination: elimination,
     reset: reset,
-    findNext: findNext
+    findNext: findNext,
+    roomMsgBoard: roomMsgBoard,
 }

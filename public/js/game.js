@@ -89,21 +89,21 @@ const back=()=>{
 
 const sendMessage=()=>{
     let message = $('#messageInput').val();
-    let name = $('#pasteMessage').text();
-    console.log(name);
-    let fullmessage = name + ' ' +  message;
-        socket.emit('chat-message', fullmessage)
-        message.value = ' ';
+    if (message === ''){
+        alert('Message cannot be empty!')
+        return false
+    }
+    socket.emit('sendMessage', message)
 };
 
-const viewRoom=()=>{
-    socket.emit('roomCreated');
-
-}
-
 const instantJoin=()=>{
-    let roomID = $('#displayrooms').text();
-    socket.emit('joinRoom', roomID);
+    if (document.getElementById("selectRoom") !== null) {
+        let roomID = document.getElementById("selectRoom").value
+        socket.emit('joinRoom', roomID);
+    }
+    else {
+        alert('Sorry, currently no room available.')
+    }
 }
 
 //when document is ready load funtions 
@@ -215,17 +215,17 @@ $(document).ready(function(){
         $('#room_players').append(msg)
     })
 
-    socket.on('chat-message', (data) => {
-        $('#pasteMessages').append($('<li>').text( data ));
+    socket.on('sendMessage', (msgs) => {
+        $('#messageBoard').empty();
+        $('#messageBoard').append(msgs);
     });
 
-    socket.on('user-connected', usernameData => {
-        $('#pasteMessage').append($('<h5>').text(usernameData));
-    });
-
-    socket.on('roomCreated', roomiden =>{
-        $('#displayrooms').append($('<a onclick="instantJoin()" href="#!" class="modal-close waves-effect waves-green btn-flat">Confirm</a>"').text(roomiden));
-        console.log(roomiden)
+    socket.on('viewRooms', (selections) =>{
+        $('#displayrooms').empty();
+        if (selections) {
+            $('#displayrooms').append(selections);
+        }
+        $('select').formSelect();
     })
 })
 
