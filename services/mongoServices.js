@@ -10,7 +10,7 @@ const connectDB=()=>{
     client.connect((err,db) => {
         accountCollection = client.db('accountManager').collection('account');
         if (!err) {
-            console.log('Account database connected')
+            console.log('Database connected')
         }
     });
 }

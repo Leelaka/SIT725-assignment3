@@ -4,8 +4,7 @@ const Express = require("express")
 let app = new Express()
 const PORT = 3000 || process.env.PORT;
 const Routes = require('./routes')
-const accountDB = require('./services/accountDB')
-const roomtDB = require('./services/roomDB')
+const accountDB = require('./services/mongoServices')
 
 //setup the socket
 const server = require('http').createServer(app);
@@ -21,7 +20,6 @@ app.use('/signup',Routes.Singup.SignupRoute)
 
 //setup the DB
 accountDB.connectDB()
-roomtDB.connectDB()
 
 server.listen(PORT,()=>{
     console.log('Server is running on ',PORT)
