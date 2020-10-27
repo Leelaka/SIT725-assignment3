@@ -1,5 +1,5 @@
 //logic
-const accountDB = require('../services/accountDB')
+const accountDB = require('../services/mongoServices')
 
 const addAccount=(account,res)=>{
     accountDB.insertAccount(account,res)

@@ -41,7 +41,6 @@
                     <div class="row" id="room_players"></div>
                     <div class="row" id="btns"></div>
                 </div>
-                <div class="row" id="Game"></div> 
             </div>
         </div>
         <footer id = "footer" class="page-footer">
@@ -63,7 +62,7 @@
     </div>
     <div class="modal-footer">
         <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-        <a onclick="logout()" href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
+        <a onclick="logout()" href="#!" class="modal-close waves-effect waves-green btn-flat">Confirm</a>
     </div>
 </div>
 
@@ -82,14 +81,10 @@
 <div id="createRoom" class="modal">
     <div class="modal-content">
         <h4>Create a room</h4>
-        <div class="row">
-            <div class="input-field col s12">
-                <input value="" id="create_roomID" type="text" class="validate">
-                <label class="create_roomID" for="create_roomID">e.g. 1234</label>
-            </div>
-        </div>
+        <p>Are you sure you want to create a room?</p>  
     </div>
     <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
         <a onclick="createRoom()" href="#!" class="modal-close waves-effect waves-green btn-flat">Confirm</a>
     </div>
 </div>
@@ -106,6 +101,7 @@
         </div>
     </div>
     <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
         <a onclick="joinRoom()" href="#!" class="modal-close waves-effect waves-green btn-flat">Confirm</a>
     </div>
 </div>
