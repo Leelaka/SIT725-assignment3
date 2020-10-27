@@ -43,7 +43,8 @@ exports = module.exports = function(io){
             }
             //send welcome message
             msg = 'Welcome to Love Letter, ' + players[socket.id].username + '!'
-            socket.emit('welcomeMessage', msg)
+            socket.emit('welcomeMessage', msg);
+            socket.emit('user-connected', username);
         })
 
         socket.on('createRoom', ()=>{
@@ -64,6 +65,8 @@ exports = module.exports = function(io){
             socket.join(roomUID)
             console.log(players[socket.id].username + ' created room ' + roomUID)
             socket.emit('room', true, room_msg, player_msg, Btns.btn_quit, Btns.btn_start)
+            socket.broadcast.emit('roomCreated', roomUID);
+    
         })
 
         socket.on('joinRoom', (roomID)=>{
@@ -92,6 +95,11 @@ exports = module.exports = function(io){
                 socket.emit('room',false, msg)
             }
         })
+
+        socket.on('chat-message', (message) => {
+            console.log(message);
+            socket.broadcast.emit('chat-message', message);
+        });
 
         socket.on('back_room', ()=>{
             //generate room information

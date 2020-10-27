@@ -87,7 +87,24 @@ const back=()=>{
     socket.emit('back_room')
 }
 
+const sendMessage=()=>{
+    let message = $('#messageInput').val();
+    let name = $('#pasteMessage').text();
+    console.log(name);
+    let fullmessage = name + ' ' +  message;
+        socket.emit('chat-message', fullmessage)
+        message.value = ' ';
+};
+
+const viewRoom=()=>{
+    console.log('clicked');
+    socket.emit('roomCreated');
+}
+//when document is ready load funtions 
+
 $(document).ready(function(){
+    $('#view_rooms').show()
+    $('#send_message').hide();
     console.log('Game page ready')
     $('.modal').modal();
     $('select').formSelect();
@@ -104,6 +121,8 @@ $(document).ready(function(){
         if (flag) {
             $('#create_room').hide()
             $('#join_room').hide()
+            $('#send_message').show()
+            $('#view_rooms').hide()
             $('#room_status').empty()
             $('#room_players').empty()
             $('#btns').empty()
@@ -123,13 +142,16 @@ $(document).ready(function(){
         $('#btns').empty()
         $('#create_room').show()
         $('#join_room').show()
+        $('#send_message').hide();
+        $('#view_rooms').show()
     })
 
     socket.on('startGame', (players_msg, discarded_msg, remaining_msg, turn_msg, play_msg, card_one, card_two, btn_continue)=>{
         $('#room_status').empty()
         $('#room_players').empty()
         $('#btns').empty()
-
+        $('#send_message').show()
+        $('#view_rooms').hide()
         $('#room_status').append($('<p>').text(players_msg))
         $('#room_status').append($('<p>').text(discarded_msg))
         $('#room_status').append($('<p>').text(remaining_msg))
@@ -187,5 +209,17 @@ $(document).ready(function(){
         $('#room_players').append(msg)
     })
 
+    socket.on('chat-message', (data) => {
+        $('#pasteMessages').append($('<li>').text( data ));
+    });
+
+    socket.on('user-connected', usernameData => {
+        $('#pasteMessage').append($('<h5>').text(usernameData));
+    });
+
+    socket.on('roomCreated', roomiden =>{
+        $('#displayrooms').append($('<h5>').text(roomiden));
+        console.log(roomiden)
+    })
 })
 
