@@ -1,0 +1,92 @@
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.feedback-modal,
+.settings-modal,
+.feedback-modal,
+.settings-modal,
+.help-modal,
+.cheetsheet-modal,
+body {
+  background-color: #881830 !important;
+  color: white;
+  padding: 0px !important;
+  max-height: 100% !important;
+  height: 86% !important;
+}
+.modal-content {
+  padding: 0px !important;
+}
+.modal-title {
+  background-color: #efc26f;
+  color: White;
+  font-family: "Times New Roman", Times, serif;
+  text-align: center;
+  padding: 10px 0px;
+}
+.modal-context {
+  margin: auto;
+  position: relative;
+  width: 80%;
+  padding-top: 20px;
+}
+.settings-icon {
+  float: right;
+}
+.settings-btn {
+  font-size: 23px !important;
+  width: 100%;
+  background-color: rgb(0, 0, 0, 0) !important;
+  margin-bottom: 30px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.feedback-modal > .modal-footer {
+  bottom: 0;
+  position: absolute;
+}
+.cheetsheet-modal > .modal-footer {
+  bottom: 0;
+  position: absolute;
+}
+.settings-modal > .modal-footer {
+  bottom: 0;
+  position: absolute;
+}
+.help-modal > .modal-footer {
+  bottom: 0;
+  position: absolute;
+}
+.btn-text {
+  float: left;
+}
+.help {
+  text-transform: capitalize;
+}
+strong {
+  font-size: 20px !important;
+}
+
+div#Room {
+  font-size: 21px !important;
+}
+img {
+  border: 7px #fff solid !important;
+  margin-left: 10px !important;
+  padding: 0px !important;
+  box-shadow: 34 21 black;
+}
+img:hover {
+  margin-bottom: -10px !important;
+}
+label {
+  color: white;
+  font-size: 15px !important;
+}
+input.select-dropdown.dropdown-trigger {
+  color: white !important;
+  font-size: 23px !important;
+}

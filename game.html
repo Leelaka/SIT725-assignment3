@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Love Letters</title>
+
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Materialize icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Font awesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="../js/game.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/game.css">
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+    <header id="header">
+        <nav>
+            <div class="nav-wrapper" style=" background-color: #9E65A9;">
+                <button id="create_room" data-target="createRoom" class="btn modal-trigger">Create a room</button>
+                <button id="join_room" data-target="joinRoom" class="btn modal-trigger">Join a room</button>
+                <button id="cheat_sheet" data-target="cheatsheet" class="btn modal-trigger">Cheatsheet</button>
+                <button id="view_rooms" data-target="viewroom" class="btn modal-trigger">View Rooms</button>
+                <button id="send_message" data-target="message" class="btn modal-trigger">Message</button>
+                <button id="view_settings" data-target="settings" class="btn modal-trigger">Settings</button>
+            </div>
+        </nav>
+    </header>
+    <div class="content">
+        <div class="container">
+            <h1 class="title">Love Letter</h1>
+            <div class="row" id="Room">
+                <div class="row" id="room_status"></div>
+                <div class="row" id="room_players"></div>
+                <div class="row" id="btns"></div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer" class="page-footer">
+        <div class="footer-copyright">
+            <div class="container">
+                <div class="row" id="Welcome"></div>
+                <button data-target="logout" class="btn modal-trigger">LOGOUT</button>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
+
+<!-- Logout Modal -->
+<div id="logout" class="modal">
+    <div class="modal-content">
+        <h4>Log out</h4>
+        <p>Are you sure you want to log out?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+        <a onclick="logout()" href="#!" class="modal-close waves-effect waves-green btn-flat">Confirm</a>
+    </div>
+</div>
+
+<!-- Cheatsheet Modal -->
+<div id="cheatsheet" class="cheetsheet-modal modal">
+    <div class="modal-content">
+        <div class="modal-title">
+            <h1> Cheatsheet</h1>
+        </div>
+        <div class="modal-context">
+            <h5>Cheat List:</h5>
+            <ol class="help">
+                <li><strong>Guard:</strong>Name a non guard player card and choose another player .if that player has
+                    that card he/She is out of round.</li>
+                <li><strong>Priest:</strong>Look at other player hands.</li>
+                <li><strong>Baron:</strong>You and other player secretly compare hands.The player with the lower
+                    value is out of round</li>
+                <li><strong>Handmaid:</strong>Until next turn,ignore all effects froma ll other player cards.</li>
+                <li><strong>5: Prince:</strong>Choose any player (including you) to discard his/her hand and draw a new
+                    card.</li>
+                <li><strong>King:</strong>Trade hands with another player of your choice</li>
+                <li><strong>Countess:</strong>if you have this card and the king or prince in your hand ,you must
+                    discard this card</li>
+                <li><strong>Princess:</strong>if you discard this card you are out of round</li>
+            </ol>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
+    </div>
+</div>
+
+<!-- Create Room Modal -->
+<div id="createRoom" class="modal">
+    <div class="modal-content">
+        <h4>Create a room</h4>
+        <p>Are you sure you want to create a room?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+        <a onclick="createRoom()" href="#!" class="modal-close waves-effect waves-green btn-flat">Confirm</a>
+    </div>
+</div>
+
+<!-- Join Room Modal -->
+<div id="joinRoom" class="modal">
+    <div class="modal-content">
+        <h4>Join a room</h4>
+        <div class="row">
+            <div class="input-field col s12">
+                <input value="" id="join_roomID" type="text" class="validate">
+                <label class="join_roomID" for="join_roomID">e.g. 1234</label>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+        <a onclick="joinRoom()" href="#!" class="modal-close waves-effect waves-green btn-flat">Confirm</a>
+    </div>
+</div>
+
+<!-- View rooms -->
+<div id="viewroom" class="modal">
+    <div class="modal-content">
+        <h4>View Rooms</h4>
+        <h5> Rooms that are currently available : </h5>
+        <div id='displayrooms'></div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+        <a href="#!" onclick="instantJoin()" class="modal-close waves-effect waves-green btn-flat">Confirm</a>
+    </div>
+</div>
+
+<!-- messages -->
+<div id="message" class="modal">
+    <div class="modal-content">
+        <h4>Message Hub</h4>
+        <div id='messageBoard'></div>
+        <input type='text' id='messageInput'>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+        <a href="#!" onclick="sendMessage()" class="modal-close waves-effect waves-green btn-flat">Send</a>
+    </div>
+</div>
+
+<!-- settings -->
+<div id="settings" class="modal settings-modal">
+    <div class="modal-content">
+        <div class="modal-title">
+            <h1><i class="fa fa-gear "></i> Settings</h1>
+        </div>
+        <div class="modal-context">
+            <!--settings and buttons-->
+            <button class="btn settings-btn modal-trigger">
+                <span class="btn-text">Volume </span><i class="settings-icon fa fa-volume-up "></i>
+            </button>
+            <button class="btn settings-btn modal-trigger" data-target="help">
+                <span class="btn-text">Help</span> <i class="settings-icon fa fa-question-circle "></i></button>
+            <button class="btn settings-btn modal-trigger" data-target="feedback">
+                <span class="btn-text">Feedback</span> <i class="settings-icon fa fa-comment fa-2x"></i></button>
+            <button class="btn settings-btn modal-trigger">
+                <span class="btn-text">Logout</span> <i class="settings-icon fa fa-sign-out"></i></button>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
+    </div>
+</div>
+<!-- feedback modal -->
+<div id="feedback" class="modal feedback-modal">
+    <div class="modal-content">
+        <div class="modal-title">
+            <h1><i class="fa fa-comment "></i> Feedback</h1>
+        </div>
+        <div class="modal-context">
+            <textarea id="feedback" name="feedback" rows="4" cols="50"></textarea>
+            <button class="btn btn-success" onclick="alert('Thankyou for your feedback');">Submit</button>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
+    </div>
+</div>
+<!-- help modal  -->
+<div id="help" class="modal help-modal">
+    <div class="modal-content">
+        <div class="modal-title">
+            <h1><i class="fa fa-question-circle "></i> Help Page</h1>
+        </div>
+        <div class="modal-context">
+            <h5>Create Room:</h5>
+            <p class="help description">This allows to create a game room to play the game.
+            </p>
+            <h5>Join Room:</h5>
+            <p class="help description">This allows to Join an existing room to start playing.
+            </p>
+            <h5>View Room:</h5>
+            <p class="help description">This allows to view all existing room in the game.
+            </p>
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="btn auto-width modal-close waves-effect waves-green">Got it</a>
+    </div>
+</div>
