@@ -27,31 +27,35 @@
     <body>
         <header id="header">
             <nav>
-                <div class="nav-wrapper" style=" background-color: white">
-                    <img class="brand_logo" src="/logo.png" alt="Loveletter_logo" />
-                    <button data-target="logout" class="btn lg-btn auto-width modal-trigger">LOGOUT</button>
+                <div class="nav-wrapper" style=" background-color: #9E65A9;">
+                    <button id = "create_room" data-target="createRoom" class="btn auto-width modal-trigger">Create a room</button>
+                    <button id = "join_room" data-target="joinRoom" class="btn auto-width modal-trigger">Join a room</button>
+                    <button id = "cheat_sheet" data-target="cheatsheet" class="btn auto-width modal-trigger">Cheatsheet</button>
+                    <button id = "view_rooms" data-target="viewroom" class="btn auto-width modal-trigger" onclick="viewRoom()" >View Rooms</button>
+                    <button id = "send_message" data-target="message" class="btn auto-width modal-trigger">Message</button>
+                    <button id = "view_settings" data-target="settings" class="btn auto-width modal-trigger">Settings</button>
+                    <div class="abc"><button data-target="logout" class="btn auto-width modal-trigger">LOGOUT</button></div>
                 </div>
             </nav>
         </header>
-        <main>
+        <div class="content">
             <div class="container">
-                <h1 class="title">Welcome to Love Letter, TestUser!</h1>
+                <h1 class="title header">Love Letter</h1>
                 <div class="row" id="Room">
                     <div class="row" id="room_status"></div>
                     <div class="row" id="room_players"></div>
                     <div class="row" id="btns"></div>
                 </div>
-                <div class="wrapper">
-                    <ul>
-                        <li><button id = "create_room" data-target="createRoom" class="btn border auto-width modal-trigger">Create a room</button></li>
-                        <li><button id = "join_room" data-target="joinRoom" class="btn border auto-width modal-trigger">Join a room</button></li>    
-                        <li><button id = "cheat_sheet" data-target="cheatsheet" class="btn border auto-width modal-trigger">Cheatsheet</button></li>
-                    </ul>
-                </div>
-                <div class="row" id="Game"></div> 
             </div>
-        </main>
-        
+        </div>
+        <footer id = "footer" class="page-footer">
+            <div class="footer-copyright">
+                <div class="container">
+                    <div class="row header" id="Welcome"></div>
+                    
+                </div>
+            </div>
+        </footer>
     </body>
 </html> 
 
@@ -63,7 +67,7 @@
     </div>
     <div class="modal-footer">
         <a href="#!" class="btn auto-width modal-close waves-effect waves-green c-red">Cancel</a>
-        <a onclick="logout()" href="#!" class="btn auto-width modal-close waves-effect waves-green">OK</a>
+        <a onclick="logout()" href="#!" class="btn auto-width modal-close waves-effect waves-green">Confirm</a>
     </div>
 </div>
 
@@ -82,13 +86,14 @@
 <div id="createRoom" class="modal">
     <div class="modal-content">
         <h4>Create a room</h4>
+        <p>Are you sure you want to create a room?</p> 
         <div class="row">
             <div class="input-field col s12">
                 <input value="" id="create_roomID" type="text" class="validate">
                 <label class="create_roomID" for="create_roomID">e.g. 1234</label>
             </div>
         </div>
-    </div>
+    </div> 
     <div class="modal-footer">
         <a href="#!" class="btn auto-width modal-close waves-effect waves-green c-red">Cancel</a>
         <a onclick="createRoom()" href="#!" class="btn auto-width modal-close waves-effect waves-green">Confirm</a>
@@ -109,5 +114,42 @@
     <div class="modal-footer">
         <a href="#!" class="btn auto-width modal-close waves-effect waves-green c-red">Cancel</a>
         <a onclick="joinRoom()" href="#!" class="btn auto-width modal-close waves-effect waves-green">Confirm</a>
+    </div>
+</div>
+
+<!-- View rooms -->
+<div id="viewroom" class="modal">
+    <div class="modal-content">
+        <h4>View Rooms</h4>
+        <h5> Rooms that are currently available : </h5> 
+        <div id='displayrooms'></div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="btn auto-width modal-close waves-effect waves-green">OK</a>
+    </div>
+</div>
+
+<!-- messages -->
+<div id="message" class="modal">
+    <div class="modal-content">
+        <h4>Message Hub</h4>
+        <div id='pasteMessage'></div>
+        <div id='pasteMessages'></div>
+        <input type='text' id='messageInput'>
+        <button onclick="sendMessage()" type='button' id='sendMessangebtn'>Send</button>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="btn auto-width modal-close waves-effect waves-green c-red">Close</a>
+    </div>
+</div>
+
+<!-- settings -->
+<div id="settings" class="modal">
+    <div class="modal-content">
+        <h4>Settings</h4>
+        <p></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="btn auto-width modal-close waves-effect waves-green">OK</a>
     </div>
 </div>

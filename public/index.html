@@ -13,16 +13,26 @@
         <h1 class="label"> <img class="brand_logo" src="/logo.png" alt="Loveletter_logo" /> </h1>
     <!--(FORM) Input boxes and buttons-->
         <br>
-        <input type="text" id="username" name="username" placeholder="USERNAME"><br><br>
-        <input type="text" id="password" name="password" placeholder="PASSWORD"><br><br>  
-        <!--Buttons-->    
-        <button type="button" class="btn auto-width mr-auto" id="btn_login" onclick="submit()"> LOGIN </button>
-        <div class="btns">
-        <button type="button" class="btn auto-width" id="btn_register" onclick="register()"> REGISTER </button>
-        <button type="button" class="btn auto-width" id="btn_reset" onclick="reset()"> RESET </button>
-        <br>
+        <div class="login-form">
+			<div class="sign-in-htm">
+				<div class="group">
+					<label class="label"  >Username</label>
+					<input type="text" class="input" id="username">
+				</div>
+				<div class="group">
+					<label class="label" >Password</label>
+					<input type="password" class="input" id="password">
+				</div>
+				
+				<div class="group s-sty">
+					<input type="submit" class="button" id="btn_login" onclick="submit()" value="Sign In">
+                </div>
+                <div class="hr"></div>
+				<div class="foot-lnk">
+					<a href="./html/signup.html" id="btn_register">Register?</a>
+				</div>
+                </div>
         </div>
         </div>
-        </form>
     </body>
 </html> 
