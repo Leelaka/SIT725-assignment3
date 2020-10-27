@@ -97,9 +97,15 @@ const sendMessage=()=>{
 };
 
 const viewRoom=()=>{
-    console.log('clicked');
     socket.emit('roomCreated');
+
 }
+
+const instantJoin=()=>{
+    let roomID = $('#displayrooms').text();
+    socket.emit('joinRoom', roomID);
+}
+
 //when document is ready load funtions 
 
 $(document).ready(function(){
@@ -218,8 +224,9 @@ $(document).ready(function(){
     });
 
     socket.on('roomCreated', roomiden =>{
-        $('#displayrooms').append($('<h5>').text(roomiden));
+        $('#displayrooms').append($('<a onclick="instantJoin()" href="#!" class="modal-close waves-effect waves-green btn-flat">Confirm</a>"').text(roomiden));
         console.log(roomiden)
     })
 })
+
 
