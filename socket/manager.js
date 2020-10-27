@@ -20,6 +20,7 @@ exports = module.exports = function(io){
             users[socket.id] = username
             msg = 'Welcome to Love Letter,  ' + users[socket.id] + '!'
             socket.emit('welcomeMessage', msg)
+            socket.emit('user-connected', users[socket.id]);
         })
 
         socket.on('createRoom', (room)=>{
@@ -43,6 +44,7 @@ exports = module.exports = function(io){
                 if (result[0]) {
                     socket.join(room.roomID)
                     console.log(users[socket.id] + ' joined room ' + room.roomID)
+                    socket.emit('userList', users[socket.id])
                 }
                 socket.emit('joinRoom',result)
             })
@@ -76,12 +78,14 @@ exports = module.exports = function(io){
             )
         })
 
-        socket.emit('chat-message', 'clicked!!');
+        // socket.emit('chat-message', 'clicked!!');
 
-        socket.on('sendChatMessage', message => {
+        socket.on('chat-message', (message) => {
             console.log(message);
             socket.broadcast.emit('chat-message', message);
         });
-
+       
     })
 }
+
+
