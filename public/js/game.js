@@ -144,14 +144,10 @@ $(document).ready(function(){
 
     socket.on('chat-message', (data) => {
         $('#pasteMessages').append($('<li>').text( data ));
-
     });
 
     socket.on('user-connected', usernameData => {
         $('#pasteMessage').append($('<h5>').text(usernameData));
     });
 });
-
-
-
 
