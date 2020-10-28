@@ -136,12 +136,60 @@
 </div>
 
 <!-- settings -->
-<div id="settings" class="modal">
+<div id="settings" class="modal settings-modal">
     <div class="modal-content">
-        <h4>Settings</h4>
-        <p></p>
+        <div class="modal-title">
+            <h1><i class="fa fa-gear "></i> Settings</h1>
+        </div>
+        <div class="modal-context">
+            <!--settings and buttons-->
+            <button class="btn settings-btn modal-trigger" data-target="help">
+                <span class="btn-text">Help</span> <i class="settings-icon fa fa-question-circle "></i></button>
+            <button class="btn settings-btn modal-trigger" data-target="feedback">
+                <span class="btn-text">Feedback</span> <i class="settings-icon fa fa-comment fa-2x"></i></button>
+        </div>
     </div>
     <div class="modal-footer">
         <a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
+    </div>
+</div>
+
+<!-- feedback modal -->
+<div id="feedback" class="modal feedback-modal">
+    <div class="modal-content">
+        <div class="modal-title">
+            <h1><i class="fa fa-comment "></i> Feedback</h1>
+        </div>
+        <div class="modal-context">
+            <textarea id="feedback" name="feedback" rows="4" cols="50"></textarea>
+            <button class="btn btn-success" onclick="alert('Thankyou for your feedback');">Submit</button>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
+    </div>
+</div>
+
+<!-- help modal  -->
+<div id="help" class="modal help-modal">
+    <div class="modal-content">
+        <div class="modal-title">
+            <h1><i class="fa fa-question-circle "></i> Help Page</h1>
+        </div>
+        <div class="modal-context">
+            <h5>Create Room:</h5>
+            <p class="help description">This allows to create a game room to play the game.
+            </p>
+            <h5>Join Room:</h5>
+            <p class="help description">This allows to Join an existing room to start playing.
+            </p>
+            <h5>View Room:</h5>
+            <p class="help description">This allows to view all existing room in the game.
+            </p>
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="btn auto-width modal-close waves-effect waves-green">Got it</a>
     </div>
 </div>
