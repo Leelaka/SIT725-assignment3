@@ -9,5 +9,5 @@ npm start
 * Xiao Wei: database, signup backend, room backend, game backend
 * Leelaka Indira Adassuriyage Don: Login backend, view room backend, message backend
 * Oluwatosin Samuel Daniel: Signup frontend, Login frontend, Cheatsheet
-* Ajith Rahul Sanaboina:
-* Akash Deep:
+* Ajith Rahul Sanaboina: Modals/pop ups styling, signup/Login frontend
+* Akash Deep: Help page, settings
